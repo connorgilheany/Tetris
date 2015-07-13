@@ -1,4 +1,4 @@
-package com.github.cman85.Tetris.Map;
+package com.github.ConnorGilheany.Tetris.Map;
 
 import org.newdawn.slick.Color;
 

@@ -1,4 +1,4 @@
-package com.github.cman85.Tetris.AI;
+package com.github.ConnorGilheany.Tetris.AI;
 
 import java.util.Random;
 

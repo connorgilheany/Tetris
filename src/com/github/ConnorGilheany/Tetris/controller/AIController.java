@@ -1,4 +1,4 @@
-package com.github.cman85.Tetris.controller;
+package com.github.ConnorGilheany.Tetris.controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,10 +11,10 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
-import com.github.cman85.Tetris.Game;
-import com.github.cman85.Tetris.AI.Genes;
-import com.github.cman85.Tetris.AI.Move;
-import com.github.cman85.Tetris.Pieces.GamePiece;
+import com.github.ConnorGilheany.Tetris.Game;
+import com.github.ConnorGilheany.Tetris.AI.Genes;
+import com.github.ConnorGilheany.Tetris.AI.Move;
+import com.github.ConnorGilheany.Tetris.Pieces.GamePiece;
 
 public class AIController implements Controller {
 

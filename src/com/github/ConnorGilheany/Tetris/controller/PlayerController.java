@@ -1,9 +1,8 @@
-package com.github.cman85.Tetris.controller;
+package com.github.ConnorGilheany.Tetris.controller;
 
+import com.github.ConnorGilheany.Tetris.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
-
-import com.github.cman85.Tetris.Game;
 
 public class PlayerController implements Controller {
 

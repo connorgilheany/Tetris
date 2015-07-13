@@ -1,12 +1,11 @@
-package com.github.cman85.Tetris.Pieces;
+package com.github.ConnorGilheany.Tetris.Pieces;
 
 import java.util.Random;
 
+import com.github.ConnorGilheany.Tetris.Game;
+import com.github.ConnorGilheany.Tetris.Map.Map;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-
-import com.github.cman85.Tetris.Game;
-import com.github.cman85.Tetris.Map.Map;
 
 public class GamePiece {
 

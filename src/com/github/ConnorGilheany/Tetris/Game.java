@@ -1,7 +1,10 @@
-package com.github.cman85.Tetris;
+package com.github.ConnorGilheany.Tetris;
 
 import java.io.IOException;
 
+import com.github.ConnorGilheany.Tetris.Map.Map;
+import com.github.ConnorGilheany.Tetris.Pieces.RandomGenerator;
+import com.github.ConnorGilheany.Tetris.controller.AIController;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -10,12 +13,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
-import com.github.cman85.Tetris.Map.Map;
-import com.github.cman85.Tetris.Pieces.GamePiece;
-import com.github.cman85.Tetris.Pieces.RandomGenerator;
-import com.github.cman85.Tetris.controller.AIController;
-import com.github.cman85.Tetris.controller.Controller;
-import com.github.cman85.Tetris.controller.PlayerController;
+import com.github.ConnorGilheany.Tetris.Pieces.GamePiece;
+import com.github.ConnorGilheany.Tetris.controller.Controller;
+import com.github.ConnorGilheany.Tetris.controller.PlayerController;
 
 public class Game extends BasicGame {
 

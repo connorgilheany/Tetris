@@ -1,8 +1,8 @@
-package com.github.cman85.Tetris.AI;
+package com.github.ConnorGilheany.Tetris.AI;
 
-import com.github.cman85.Tetris.Game;
-import com.github.cman85.Tetris.Map.Block;
-import com.github.cman85.Tetris.Map.Map;
+import com.github.ConnorGilheany.Tetris.Map.Block;
+import com.github.ConnorGilheany.Tetris.Map.Map;
+import com.github.ConnorGilheany.Tetris.Game;
 
 public class Move {
 

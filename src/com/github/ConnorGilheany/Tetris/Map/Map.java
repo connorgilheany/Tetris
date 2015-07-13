@@ -1,9 +1,9 @@
-package com.github.cman85.Tetris.Map;
+package com.github.ConnorGilheany.Tetris.Map;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-import com.github.cman85.Tetris.Pieces.GamePiece;
+import com.github.ConnorGilheany.Tetris.Pieces.GamePiece;
 
 public class Map {
 	

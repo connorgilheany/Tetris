@@ -1,4 +1,4 @@
-package com.github.cman85.Tetris.Pieces;
+package com.github.ConnorGilheany.Tetris.Pieces;
 
 import java.util.Arrays;
 
