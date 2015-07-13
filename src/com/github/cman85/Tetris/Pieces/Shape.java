@@ -1,7 +1,6 @@
 package com.github.cman85.Tetris.Pieces;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Shape {
 	
@@ -11,9 +10,13 @@ public class Shape {
 	private int rotations = 0;
 	
 	public Shape(){
-		setShapeType(getRandomShapeType());
+		setShapeType(getNextShapeType());
 	}
 	
+	public Shape(ShapeType shapeType) {
+		this.type = shapeType;
+	}
+
 	public void rotateCW() {
 		rotations += 1;
 	    final int M = currentShape.length;
@@ -28,10 +31,9 @@ public class Shape {
 	}
 	
 
-	private ShapeType getRandomShapeType(){
+	private ShapeType getNextShapeType(){
 		
-		//return ShapeType.I;
-		return ShapeType.values()[new Random().nextInt(ShapeType.values().length)];
+		return RandomGenerator.nextPiece();
 	}
 	
 	public boolean[][] getCurrentShape(){
@@ -62,8 +64,7 @@ public class Shape {
 	}
 	
 	public Shape copy(){
-		Shape shapeCopy = new Shape();
-		shapeCopy.setShapeType(getShapeType());
+		Shape shapeCopy = new Shape(getShapeType());
 		shapeCopy.setCurrentShape(deepCopy(getCurrentShape()));
 		return shapeCopy;
 	}

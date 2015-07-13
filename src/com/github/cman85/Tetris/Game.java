@@ -1,5 +1,7 @@
 package com.github.cman85.Tetris;
 
+import java.io.IOException;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -10,6 +12,7 @@ import org.newdawn.slick.SlickException;
 
 import com.github.cman85.Tetris.Map.Map;
 import com.github.cman85.Tetris.Pieces.GamePiece;
+import com.github.cman85.Tetris.Pieces.RandomGenerator;
 import com.github.cman85.Tetris.controller.AIController;
 import com.github.cman85.Tetris.controller.Controller;
 import com.github.cman85.Tetris.controller.PlayerController;
@@ -17,8 +20,8 @@ import com.github.cman85.Tetris.controller.PlayerController;
 public class Game extends BasicGame {
 
 	private Map map;
-	public final int TICK_TIME = 500;
-	public int AI_SPEED = 1000;
+	public int TICK_TIME = 500;
+	public final int AI_SPEED = 3000;//1000
 	private Controller controller;
 	private boolean AI_CONTROLLER = true;
 
@@ -27,6 +30,8 @@ public class Game extends BasicGame {
 
 	private boolean paused = false;
 	private boolean fast = false;
+	public boolean mutate = true;
+
 
 	private int points = 0;
 
@@ -38,6 +43,13 @@ public class Game extends BasicGame {
 			agc.setTargetFrameRate(60);
 			agc.setUpdateOnlyWhenVisible(false);
 			agc.start();
+			
+			Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+		        public void run() {
+		        	exit();	
+		        }
+		    }));
+			
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -54,10 +66,10 @@ public class Game extends BasicGame {
 			((AIController) controller).drawStats(g);
 
 		g.setColor(Color.white);
-		g.drawString("Points: " + points, 50, 100);
-		g.drawString(
+		g.drawString("Points: " + points, 50, 30);
+		/*g.drawString(
 				String.format("Piece Position: x: %d, y: %d",
-						currentPiece.getX(), currentPiece.getY()), 50, 150);
+						currentPiece.getX(), currentPiece.getY()), 50, 150);*/
 		// g.drawString("Current piece: " + currentPiece.toString(), 50, 700);
 		if (paused)
 			g.drawString("PAUSED", 50, 250);
@@ -65,14 +77,19 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer gc) throws SlickException {
+		setController();
+		map = new Map();
+		if (currentPiece == null)
+			nextGamePiece();
+	}
+
+	private void setController() {
 		if (AI_CONTROLLER)
 			controller = new AIController();
 		else
 			controller = new PlayerController();
 		controller.init();
-		map = new Map();
-		if (currentPiece == null)
-			nextGamePiece();
+
 	}
 
 	private int totalDelta = 0;
@@ -83,9 +100,18 @@ public class Game extends BasicGame {
 		totalDelta += delta;
 
 		if (gc.getInput().isKeyPressed(Input.KEY_EQUALS))
-			AI_SPEED += 10;
+			TICK_TIME -= 10;
 		if (gc.getInput().isKeyPressed(Input.KEY_MINUS))
-			AI_SPEED -= 10;
+			TICK_TIME += 10;
+		if(gc.getInput().isKeyPressed(Input.KEY_PERIOD))
+			fast = !fast;
+		if(gc.getInput().isKeyPressed(Input.KEY_COMMA))
+			swapInputs();
+		if(gc.getInput().isKeyPressed(Input.KEY_C))
+			clearData();
+		if(gc.getInput().isKeyPressed(Input.KEY_M))
+			mutate = !mutate;
+
 		if (!AI_CONTROLLER)
 			controller.doInput(this, gc);
 
@@ -100,13 +126,35 @@ public class Game extends BasicGame {
 
 	}
 
-	public void tick(boolean takeInput) {
+	private void exit() {
+		if(AI_CONTROLLER){
+			try {
+				((AIController)controller).save();
+				((AIController)controller).saveBestEverGenes();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
+	private void clearData() {
+		if(AI_CONTROLLER){
+			end();
+			((AIController)controller).clearData();
+		}
+	}
+
+	private void swapInputs() {
+		AI_CONTROLLER = !AI_CONTROLLER;
+		setController();
+	}
+
+	public void tick(boolean takeInput) {
 		if (!paused) {
 			if (AI_CONTROLLER) {
 				if (fast) {
 					for (int i = 0; i < AI_SPEED; i++) {
-
 						if (takeInput) {
 							controller.doInput(this, null);
 						}
@@ -118,10 +166,8 @@ public class Game extends BasicGame {
 					}
 
 				} else {
-
-					if (takeInput) {
+					if (takeInput) 
 						controller.doInput(this, null);
-					}
 
 					if (!currentPiece.move(map, 0, 1)) {
 						freezePiece();
@@ -184,10 +230,14 @@ public class Game extends BasicGame {
 	}
 
 	public void end() {
-		System.out.println("Ending game");
+		//System.out.println("Ending game");
+		RandomGenerator.newGame();
 		controller.endGame(this);
+		nextPiece = null;
+		currentPiece = null;
 		map.clear();
 		points = 0;
+		nextGamePiece();
 
 	}
 

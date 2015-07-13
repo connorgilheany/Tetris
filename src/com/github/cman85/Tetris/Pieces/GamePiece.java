@@ -10,6 +10,7 @@ import com.github.cman85.Tetris.Map.Map;
 
 public class GamePiece {
 
+	public static Random rand = new Random();
 	private Shape shape;
 	private Color color;
 	private int x = 3;
@@ -17,7 +18,6 @@ public class GamePiece {
 
 	public GamePiece(Game game) {
 		shape = new Shape();
-		Random rand = new Random();
 		color = new Color(rand.nextInt(255), rand.nextInt(255),
 				rand.nextInt(255));
 		

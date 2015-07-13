@@ -12,6 +12,7 @@ public class Genes {
 	
 	private long pointsScored;
 	private int linesCleared = 0;
+	private int blocksPlaced = 0;
 	private Random rand = new Random();
 
 	
@@ -25,10 +26,10 @@ public class Genes {
 	
 	public void mutate(){
 		int choice = rand.nextInt(5);
-		float change = rand.nextInt(100) / (float)50;
+		float change = rand.nextInt(50) / (float)50;
 		if(rand.nextBoolean())
 			change *= -1;
-		System.out.printf("Change: %f, choice: %d\n", change, choice);
+	//	System.out.printf("Change: %f, choice: %d\n", change, choice);
 
 		switch(choice){
 			case 0:
@@ -64,8 +65,10 @@ public class Genes {
 				",\n lineBonus: " + lineBonus +
 				",\n overhangPenalty: " + overhangPenalty +
 				",\n blockedPenalty: " + blockedPenalty +
+				",\n pointsScored: " + pointsScored + 
 				",\n linesCleared: " + linesCleared +
-				",\n pointsScored: " + pointsScored;
+				",\n blocksPlaced: " + blocksPlaced;
+
 	}
 	
 	public int compareTo(Object o){
@@ -140,12 +143,22 @@ public class Genes {
 		copy.setWallBonus(wallBonus);
 		return copy;
 	}
-	
+
+
 	public void addLinesCleared(int amt){
 		linesCleared += amt;
 	}
 	public int getLinesCleared(){
 		return linesCleared;
 	}
+
+	public int getBlocksPlaced() {
+		return blocksPlaced;
+	}
+
+	public void setBlocksPlaced(int blocksPlaced) {
+		this.blocksPlaced = blocksPlaced;
+	}
+	
 
 }

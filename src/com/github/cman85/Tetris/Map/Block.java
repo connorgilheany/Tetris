@@ -7,11 +7,15 @@ public class Block {
 	private Color color;
 	
 	public Block(Color color){
-		this.color = color;
+		setColor(color);
 	}
 
 	public Color getColor() {
 		return color;
+	}
+	
+	public void setColor(Color color){
+		this.color = color;
 	}
 
 }

@@ -32,10 +32,14 @@ public enum ShapeType{
 			{true, true},
 			{true, true},
 	}),
+	/*D(new boolean[][]{
+		{true}	
+	}),*/
 	T(new boolean[][]{
 			{false, true, false},
 			{true, true, true},
 	}); 
+	
 	
 	private boolean[][] shape;
 
@@ -55,6 +59,7 @@ public enum ShapeType{
 		if(this == S) return "S";
 		if(this == Z) return "Z";
 		if(this == T) return "T";
+		//if(this == D) return "D";
 		return "null";
 	}
 }
