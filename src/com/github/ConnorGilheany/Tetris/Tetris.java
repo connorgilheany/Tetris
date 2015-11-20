@@ -3,11 +3,9 @@ package com.github.ConnorGilheany.Tetris;
 import java.util.Arrays;
 
 public class Tetris{
-	
-	
+
 	public static void main(String[] args){
-		new Game("Tetris");
-		
+		Game game = new Game("Tetris");
 	}
 	
 	static void printMatrix(boolean[][] mat) {

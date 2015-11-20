@@ -37,6 +37,7 @@ public class RandomGenerator {
 	        bag[index] = bag[i];
 	        bag[i] = temp;
 	    }
+
 	}
 
 }

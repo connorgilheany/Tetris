@@ -1,11 +1,11 @@
 package com.github.ConnorGilheany.Tetris.Pieces;
 
-import java.util.Random;
-
 import com.github.ConnorGilheany.Tetris.Game;
 import com.github.ConnorGilheany.Tetris.Map.Map;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+
+import java.util.Random;
 
 public class GamePiece {
 
@@ -95,7 +95,6 @@ public class GamePiece {
 		while (canGo(map, x, y + deltaY)) {
 			deltaY++;
 		}
-		//g.drawString(String.format("Delta Y: %d", deltaY), 50, 200);
 		deltaY--;
 
 		boolean[][] shapeArray = shape.getCurrentShape();
@@ -113,25 +112,25 @@ public class GamePiece {
 		return x;
 	}
 
-	public int getY() {
-		return y;
-	}
-	
-	public Color getColor(){
-		return color;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
 	}
 
-	public void slideDown(Map map) {
+    public void setY(int y) {
+        this.y = y;
+    }
 
-		while (move(map, 0, 1));
-	}
+    public Color getColor() {
+        return color;
+    }
 
-	public void setX(int x) {
-		this.x = x;		
-	}
+    public void slideDown(Map map) {
 
-	public void setY(int y) {
-		this.y = y;
-	}
+        while (move(map, 0, 1)) ;
+    }
 
 }

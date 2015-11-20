@@ -6,13 +6,19 @@ import org.newdawn.slick.Input;
 
 public class PlayerController implements Controller {
 
-	@Override
-	public void doInput(Game game,  GameContainer gc) {
+    /**
+     * Checks for player input and responds appropriately
+     *
+     * @param game The game being played
+     * @param gc   the game container
+     */
+    @Override
+    public void doInput(Game game,  GameContainer gc) {
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
 			game.getCurrentPiece().slideDown(game.getMap());
-			game.tick(true);
-		}
-		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
+            game.tick();
+        }
+        if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 			game.getCurrentPiece().move(game.getMap(), 1, 0);
 		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
 			game.getCurrentPiece().move(game.getMap(), -1, 0);
@@ -24,19 +30,23 @@ public class PlayerController implements Controller {
 			game.end();
 		if(gc.getInput().isKeyPressed(Input.KEY_P)){
 			game.togglePause();
-		}
-	}
+        }
+    }
 
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * Initialization code. Empty.
+     */
+    @Override
+    public void init() {
+    }
 
-	@Override
-	public void endGame(Game game) {
-		// TODO Auto-generated method stub
-		
+    /**
+     * Run upon ending the game. Empty.
+     *
+     * @param game the game object
+     */
+    @Override
+    public void endGame(Game game) {
 	}
 
 }

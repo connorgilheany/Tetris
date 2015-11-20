@@ -8,49 +8,56 @@ public enum ShapeType{
 			{true},
 			{true},
 			{true}
-			}),
-	
-	J(new boolean[][]{
-			{false, true},
+    }, 2),
+
+    J(new boolean[][]{
+            {false, true},
 			{false, true},
 			{true, true}
-	}),
-	L(new boolean[][]{
-			{true, false},
+    }, 4),
+    L(new boolean[][]{
+            {true, false},
 			{true, false},
 			{true, true}
-	}),
-	Z(new boolean[][]{
-			{true, true, false},
+    }, 4),
+    Z(new boolean[][]{
+            {true, true, false},
 			{false, true, true},
-	}),
-	S(new boolean[][]{
-			{false, true, true},
+    }, 2),
+    S(new boolean[][]{
+            {false, true, true},
 			{true, true, false},
-	}),
-	O(new boolean[][]{
+    }, 2),
+    O(new boolean[][]{
+            {true, true},
 			{true, true},
-			{true, true},
-	}),
-	/*D(new boolean[][]{
-		{true}	
+    }, 1),
+    /*D(new boolean[][]{
+        {true}
 	}),*/
 	T(new boolean[][]{
 			{false, true, false},
 			{true, true, true},
-	}); 
-	
-	
-	private boolean[][] shape;
+    }, 4);
 
-	private ShapeType(boolean[][] shape){
-		this.shape = shape;
-	}
-	
-	public boolean[][] getShape(){
+
+    private boolean[][] shape;
+    private int maxRotations;
+
+    ShapeType(boolean[][] shape, int maxRotations) {
+        this.shape = shape;
+        this.maxRotations = maxRotations;
+    }
+
+    public boolean[][] getShape(){
 		return shape;
-	}
-	@Override
+    }
+
+    public int getMaxRotations() {
+        return maxRotations;
+    }
+
+    @Override
 	public String toString(){
 		if(this == I) return "I";
 		if(this == L) return "L";
