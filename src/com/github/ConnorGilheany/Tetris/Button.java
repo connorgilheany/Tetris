@@ -75,7 +75,6 @@ public class Button extends Rectangle {
 
     /**
      * Draws the button onto the screen
-     *
      * @param g the graphics to draw with
      */
     public void draw(Graphics g) {

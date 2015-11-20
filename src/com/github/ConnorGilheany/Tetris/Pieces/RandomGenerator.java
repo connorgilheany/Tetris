@@ -2,7 +2,7 @@ package com.github.ConnorGilheany.Tetris.Pieces;
 
 import java.util.Random;
 
-//Copy of BSPs Random Generator
+//Implementation of BSPs Random Generator
 public class RandomGenerator {
 	
 	private static ShapeType[] bag;
