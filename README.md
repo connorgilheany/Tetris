@@ -6,4 +6,4 @@ This is the second version of Tetris with AI that I have made. It utilizes the S
 The AI works by taking the current piece and placing it in all possible rotations and locations. It then analyzes what that placement would do: how many lines would it complete, how high would it be placed, would it leave an overhang, does it further block any open spaces?
 
 #Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mqpz0zoAkSo" frameborder="0" allowfullscreen></iframe>
+https://www.youtube.com/embed/mqpz0zoAkSo
