@@ -36,14 +36,14 @@ public class Move {
         l = calculateLines(game);
         points += genes.getLineBonus() * Math.pow(l, 1.5); //1, 2.83, 5.2, 8
 
-        a = averageHeights(game);
-        points += Math.pow(genes.getHeightPenalty(), 1) * a;
-
         w = walledPieces(game);
         points += genes.getWallBonus() * w;
 
         Map map = game.getMap();
         if (l != 0) map = makeNewMap(map, game);
+
+        a = averageHeights(map);
+        points += Math.pow(genes.getHeightPenalty(), 1) * a;
 
         b = blockedPieces(map);
         points += genes.getBlockedPenalty() * b;
@@ -116,18 +116,18 @@ public class Move {
     }
 
     /**
-     * Calculates the average height of the current game piece
+     * Calculates the average height of the blocks on the map
      *
-     * @param game the game being played
-     * @return the average height of the current game piece
+     * @param map the map being played
+     * @return the average height of the blocks
      */
-    private float averageHeights(Game game) {
+    private float averageHeights(Map map) {
         float totalHeight = 0;
         float count = 0;
-        boolean[][] shape = game.getCurrentPiece().getShape().getCurrentShape();
-        for (int y = 0; y < shape.length; y++) {
-            for (int x = 0; x < shape[y].length; x++) {
-                if (shape[y][x]) {
+        Block[][] blocks = map.getBlocks();
+        for (int y = 0; y < blocks.length; y++) {
+            for (int x = 0; x < blocks[y].length; x++) {
+                if (blocks[y][x] != null) {
                     totalHeight += (22 - (this.y + y));
                     count++;
                 }

@@ -17,8 +17,8 @@ import java.util.List;
 
 public class AIController implements Controller {
 
-    public static final String FILE_PATH = "/Users/connorgilheany/Desktop/TetrisData.txt";
-    public static final String FILE_PATH_BEST = "/Users/connorgilheany/Desktop/TetrisBestGenes.txt";
+    public static final String FILE_PATH = "/Users/connorgilheany/Desktop/Programming/TetrisData/TetrisData.txt";
+    public static final String FILE_PATH_BEST = "/Users/connorgilheany/Desktop/Programming/TetrisData/TetrisBestGenes.txt";
 
 
     private Genes currentGenes;

@@ -167,4 +167,17 @@ public class Genes implements Comparable<Genes> {
     }
 
 
+    @Override
+    public int hashCode() {
+        int result = (heightPenalty != +0.0f ? Float.floatToIntBits(heightPenalty) : 0);
+        result = 31 * result + (overhangPenalty != +0.0f ? Float.floatToIntBits(overhangPenalty) : 0);
+        result = 31 * result + (lineBonus != +0.0f ? Float.floatToIntBits(lineBonus) : 0);
+        result = 31 * result + (blockedPenalty != +0.0f ? Float.floatToIntBits(blockedPenalty) : 0);
+        result = 31 * result + (wallBonus != +0.0f ? Float.floatToIntBits(wallBonus) : 0);
+        result = 31 * result + (int) (pointsScored ^ (pointsScored >>> 32));
+        result = 31 * result + linesCleared;
+        result = 31 * result + blocksPlaced;
+        result = 31 * result + (rand != null ? rand.hashCode() : 0);
+        return result;
+    }
 }
