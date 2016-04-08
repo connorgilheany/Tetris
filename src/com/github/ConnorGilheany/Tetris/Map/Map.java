@@ -135,10 +135,12 @@ public class Map {
      * @param row the row to clear
      */
     private void clearRow(int row) {
-		for(int x = 0; x < blocks[row].length; x++){
+        //clears finished row
+        for(int x = 0; x < blocks[row].length; x++){
 			removeBlock(x, row);
 		}
-		for(int y = row; y > 0; y--){
+        //Moves above rows down
+        for(int y = row; y > 0; y--){
 			for(int x = 0; x < blocks[y].length; x++){
 				if(blocks[y-1][x] != null) placeBlock(x, y, blocks[y-1][x].getColor());
 				else removeBlock(x, y);
@@ -146,6 +148,10 @@ public class Map {
             }
         }
 
+        //Clears the top row
+        for (int x = 0; x < blocks[0].length; x++) {
+            removeBlock(x, 0);
+        }
     }
 
 
