@@ -158,7 +158,6 @@ public class Game extends BasicGame {
 
         if (fast && AI_CONTROLLER || totalDelta > TICK_TIME) {
             tick();
-            totalDelta = 0;
         }
     }
 
@@ -223,6 +222,7 @@ public class Game extends BasicGame {
             } else {
                 checkPieceGrounded();
             }
+            totalDelta = 0;
         }
 
     }
