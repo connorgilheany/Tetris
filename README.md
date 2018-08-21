@@ -1,3 +1,5 @@
+Note: This code is from when I was a junior in high school. As such, it's not representative of my current abilities (i.e. not as clean or succinct as I could write it now). It's still a very interesting project, but don't take the code quality too seriously!
+
 # Tetris with AI
 
 This is the second version of Tetris with AI that I have made. It utilizes the Slick2D library for user input and drawing to the screen. The game is also playable without AI, if you're into that.
